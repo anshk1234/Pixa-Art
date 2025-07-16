@@ -15,6 +15,8 @@ from colour_palette.utils import show_palette, model_dict, get_palette, \
     sort_func_dict, store_palette, display_matplotlib_code, display_plotly_code,\
      get_df_rgb, enhancement_range, plot_rgb_3d, plot_hsv_3d, print_praise
 
+# ---- Page Setup ----
+st.set_page_config(page_title="Pixa-Art 🎨", layout="centered")
 
 gallery_files = glob(os.path.join(".", "images", "*"))
 gallery_dict = {
