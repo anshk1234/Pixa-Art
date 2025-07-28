@@ -30,7 +30,7 @@ st.sidebar.caption("Tell your data story with style.")
 st.sidebar.markdown("Made by [ANSH](https://portfolio-drv5jcbigqmnmfbztvk3ng.streamlit.app/)")
 
 with st.sidebar.expander("See My Other Streamlit Apps"):
-    st.caption("Study app: [App](https://study-app-tuxkvrvlrrmqextrtvy4rb.streamlit.app/)")
+    st.caption("Study app: [App](https://study-tracker-app.streamlit.app/)")
     st.caption("Music app: [App](https://music-app-efnnywpco6zhjnqz4nkxkk.streamlit.app/)")
     st.caption("Matrix calculator: [App](https://matrix-app.streamlit.app/)")
     st.caption("Quote generator: [App](https://aesthetic-quote-generator-app-fmqblazjnmsfhkhzrxn28g.streamlit.app/)")
