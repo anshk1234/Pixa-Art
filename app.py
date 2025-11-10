@@ -1,3 +1,4 @@
+import streamlit as st
 import os
 import sys
 import pandas as pd
@@ -7,16 +8,37 @@ import requests
 from io import BytesIO
 from glob import glob
 from PIL import Image, ImageEnhance
+import time
+import json
+from streamlit_lottie import st_lottie
 
-import streamlit as st
+# ---- Page Setup ----
+st.set_page_config(page_title="Pixa-Art 🎨", layout="centered")
+# --- Splash Animation ---
+def load_lottiefile(filepath):
+    with open(filepath, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+if "show_intro" not in st.session_state:
+    st.session_state.show_intro = True
+
+if st.session_state.show_intro:
+    lottie_intro = load_lottiefile("art.json")
+    splash = st.empty()
+    with splash.container():
+        st.markdown("<h1 style='text-align:center;'>Welcome to Pixa-Art 🎨</h1>", unsafe_allow_html=True)
+        st_lottie(lottie_intro, height=280, speed=0.5, loop=True)
+        time.sleep(3)
+    splash.empty()
+    st.session_state.show_intro = False
+
 
 sys.path.insert(0, ".")
 from colour_palette.utils import show_palette, model_dict, get_palette, \
     sort_func_dict, store_palette, display_matplotlib_code, display_plotly_code,\
      get_df_rgb, enhancement_range, plot_rgb_3d, plot_hsv_3d, print_praise
 
-# ---- Page Setup ----
-st.set_page_config(page_title="Pixa-Art 🎨", layout="centered")
+
 
 gallery_files = glob(os.path.join(".", "images", "*"))
 gallery_dict = {
@@ -30,7 +52,7 @@ st.sidebar.caption("Tell your data story with style.")
 st.sidebar.markdown("Made by [ANSH](https://portfolio-drv5jcbigqmnmfbztvk3ng.streamlit.app/)")
 
 with st.sidebar.expander("See My Other Streamlit Apps"):
-    st.caption("Study app: [App](https://study-tracker-app.streamlit.app/)")
+    st.caption("Study app: [App](https://study-app-tuxkvrvlrrmqextrtvy4rb.streamlit.app/)")
     st.caption("Music app: [App](https://music-app-efnnywpco6zhjnqz4nkxkk.streamlit.app/)")
     st.caption("Matrix calculator: [App](https://matrix-app.streamlit.app/)")
     st.caption("Quote generator: [App](https://aesthetic-quote-generator-app-fmqblazjnmsfhkhzrxn28g.streamlit.app/)")
